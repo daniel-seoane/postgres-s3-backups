@@ -27,7 +27,7 @@ export const env = envsafe({
     desc: 'Prefix to the file name.',
     default: 'backup',
   }),
-  RESTART_DEPLOYMENT: str({
+  RESTART_DEPLOYMENT: bool({
     desc: 'Restart the deployment after a backup is complete.',
     default: false,
     allowEmpty: true,

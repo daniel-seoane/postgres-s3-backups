@@ -19,12 +19,27 @@ export const env = envsafe({
     allowEmpty: true,
   }),
   RUN_ON_STARTUP: bool({
-    desc: 'Run a backup on startup of this application',
+    desc: 'Run a backup on startup of this application.',
     default: false,
     allowEmpty: true,
   }),
   BACKUP_FILE_PREFIX: str({
-    desc: 'Prefix to the file name',
+    desc: 'Prefix to the file name.',
     default: 'backup',
+  }),
+  RESTART_DEPLOYMENT: str({
+    desc: 'Restart the deployment after a backup is complete.',
+    default: false,
+    allowEmpty: true,
+  }),
+  DEPLOYMENT_ID: str({
+    desc: 'The deployment id to restart after a backup is complete.',
+    default: '',
+    allowEmpty: true,
+  }),
+  RAILWAY_TOKEN: str({
+    desc: 'The Railway token to restart the deployment.',
+    default: '',
+    allowEmpty: true,
   })
 })

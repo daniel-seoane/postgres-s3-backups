@@ -23,15 +23,21 @@ const tryRestartDeployment = async () => {
   }
 }
 
-const job = new CronJob(env.BACKUP_CRON_SCHEDULE, async () => {
+////////////////////////
+
+const tryBackupAndRestart = async () => {
   await tryBackup();
   await tryRestartDeployment();
+}
+
+const job = new CronJob(env.BACKUP_CRON_SCHEDULE, async () => {
+  await tryBackupAndRestart();
 });
 
 if (env.RUN_ON_STARTUP) {
   console.log("Running on start backup...");
 
-  tryBackup();
+  tryBackupAndRestart()
 }
 
 job.start();
